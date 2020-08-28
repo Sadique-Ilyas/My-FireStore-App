@@ -25,8 +25,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String FIRST_NAME = "First Name";
-    private static final String SUR_NAME = "Sur Name";
+    private static final String FIRST_NAME = "firstName";
+    private static final String SUR_NAME = "surName";
     private EditText myFirstName, mySurName;
     private TextView dataView;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -146,8 +146,8 @@ public class MainActivity extends AppCompatActivity {
     public void updateFirstName(View view)
     {
         String firstName = myFirstName.getText().toString().trim();
-        Map<String, Object> info = new HashMap<>();
-        info.put(FIRST_NAME, firstName);
+        //Map<String, Object> info = new HashMap<>();
+        //info.put(FIRST_NAME, firstName);
         // Only updates first name and sets surname as null
         //docRef.set(info);
         // Updates first name and leave surname as it is (If the document doesn't exist and
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
         //docRef.set(info, SetOptions.merge());
         // Updates first name and leave surname as it is (If the document doesn't exist and
         // we update first name, then no new document is created)
-        docRef.update(info);
+        docRef.update(FIRST_NAME, firstName);
     }
 
     public void deleteFirstName(View view)
